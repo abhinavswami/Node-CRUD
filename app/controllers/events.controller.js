@@ -26,12 +26,13 @@ function showEvents(req,res){
  */
 function showSingle(req,res){
   // get a single event
-  console.log(req.params.slug);
-  var event = {name: 'Basketball',description : 'Throwing into a basket'};
-
-  console.log(event);
-  //onst event = {name: 'Basketball', slug: 'basketball', description : 'Throwing into a basket'};
-  res.render('pages/single', {event,event});
+  Event.findOne({ slug: req.params.slug }, (err,event) => {
+    if(err){
+      res.status(404);
+      res.send('Event not found!');
+    }
+    res.render('pages/single', {event,event});
+  });
 }
 
 /**
