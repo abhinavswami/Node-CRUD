@@ -9,8 +9,16 @@ seedEvents : seedEvents
  * show all events
  */
 function showEvents(req,res){
-  // return a view with data
-  res.render('pages/events',{events: events});
+
+  // get all events
+  Event.find({},(err,events) => {
+    if(err){
+      res.status(404);
+      res.send('Events not found!');
+    }
+    // return a view with data
+    res.render('pages/events',{events: events});
+  });
 }
 
 /**
