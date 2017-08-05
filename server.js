@@ -1,14 +1,27 @@
 // grab our dependencies
 
-const express = require('express'),
-app = express(),
-port = process.env.PORT || 8080,
-expressLayouts = require('express-ejs-layouts'),
-mongoose = require('mongoose'),
-bodyparser = require('body-parser');
+const express   = require('express'),
+app             = express(),
+port            = process.env.PORT || 8080,
+expressLayouts  = require('express-ejs-layouts'),
+mongoose        = require('mongoose'),
+bodyparser      = require('body-parser'),
+session         = require('express-session');
+cookieParser    = require('cookie-parser'),
+flash           = require('connect-flash');
 
 
 // configure our dependencies
+// set session and cookie parser
+app.use(cookieParser());
+app.use(session({
+  secret:'super-secret-key',
+  cookie: {maxAge: 60000},
+  resave: false,  // forces the session to be saved back to the store
+  saveUninitialized: false  // don't save unmoified sessions
+}));
+app.use(flash());
+
 // tell express where to look for static assets
 app.use(express.static(__dirname + '/public'));
 
