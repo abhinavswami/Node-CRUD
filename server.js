@@ -4,7 +4,8 @@ const express = require('express'),
 app = express(),
 port = process.env.PORT || 8080,
 expressLayouts = require('express-ejs-layouts'),
-mongoose = require('mongoose');
+mongoose = require('mongoose'),
+bodyparser = require('body-parser');
 
 
 // configure our dependencies
@@ -17,6 +18,9 @@ app.use(expressLayouts);
 
 // connect to our database
 mongoose.connect('mongodb://admin:admin@ds127173.mlab.com:27173/olympic-events');
+
+// use body parser to grab info from a form
+app.use(bodyparser.urlencoded({extended:true}));
 
 // set the routes
 app.use (require('./app/routes'));
