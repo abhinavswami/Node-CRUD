@@ -8,7 +8,8 @@ mongoose        = require('mongoose'),
 bodyparser      = require('body-parser'),
 session         = require('express-session');
 cookieParser    = require('cookie-parser'),
-flash           = require('connect-flash');
+flash           = require('connect-flash'),
+expressValidator= require('express-validator');
 
 
 // configure our dependencies
@@ -34,6 +35,7 @@ mongoose.connect('mongodb://admin:admin@ds127173.mlab.com:27173/olympic-events')
 
 // use body parser to grab info from a form
 app.use(bodyparser.urlencoded({extended:true}));
+app.use(expressValidator());
 
 // set the routes
 app.use (require('./app/routes'));
