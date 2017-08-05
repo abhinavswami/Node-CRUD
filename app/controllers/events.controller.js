@@ -33,7 +33,6 @@ function showSingle(req,res){
       res.status(404);
       res.send('Event not found!');
     }
-    console.log(req.flash('Success'));
     res.render('pages/single', {
       event:event,
       success: req.flash('success')
@@ -85,7 +84,7 @@ function showSingle(req,res){
       if(err){
         throw err;
       }
-      
+
       // set a successful flash message
       req.flash('success', 'Successfully created event!');
       // redirect to newly created event
