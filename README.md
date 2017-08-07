@@ -1,5 +1,5 @@
-# NodeStarter
-A Node and Mongo crud app
+# Node-CRUD
+A Node and Mongo app demonstrating create, remove, update and delete operations for a web application
 
 ## Requirements
 
