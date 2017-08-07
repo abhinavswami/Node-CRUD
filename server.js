@@ -31,7 +31,8 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
 // connect to our database
-mongoose.connect('mongodb://admin:admin@ds127173.mlab.com:27173/olympic-events');
+// for a secured db here is the format : mongoose.connect('mongodb://<username>:<password>@localhost:27173/<dbname>');
+mongoose.connect('mongodb://localhost:27016/olympic-events');
 
 // use body parser to grab info from a form
 app.use(bodyparser.urlencoded({extended:true}));
