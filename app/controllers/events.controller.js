@@ -6,7 +6,8 @@ seedEvents : seedEvents,
 showCreate: showCreate,
 processCreate: processCreate,
 showEdit: showEdit,
-processEdit:processEdit
+processEdit: processEdit,
+deleteEvent: deleteEvent
 }
 
 /**
@@ -153,3 +154,16 @@ function showSingle(req,res){
           });
         });
     }
+
+    /**
+     * Delete an event
+     */
+     function deleteEvent(req,res){
+       Event.remove({slug: req.params.slug}, (err) => {
+         // set flash data
+         req.flash('success', 'Event deleted!');
+
+         // redirect back to the events page
+         res.redirect('/events');
+       });
+     }
