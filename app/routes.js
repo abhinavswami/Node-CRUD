@@ -18,6 +18,8 @@ router.get('/events/create',eventsController.showCreate)
 router.post('/events/create',eventsController.processCreate);
 
 // edit events
+router.get('/events/:slug/edit', eventsController.showEdit);
+router.post('/events/:slug', eventsController.processEdit);
 // delete events
 
 // seed events
