@@ -135,7 +135,7 @@ function showSingle(req,res){
       req.checkBody('description', 'Description is required').notEmpty();
 
       req.getValidationResult().then(function(results){
-        const errors = result.array();
+        const errors = results.array();
         if(errors.length>0) {
             req.flash('errors', errors.map(err => err.msg));
             res.redirect(`/events/${req.params.slug}/edit`);
